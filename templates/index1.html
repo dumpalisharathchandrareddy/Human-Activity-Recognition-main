@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Human Activity Recognition</title>
+        <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    </head>
+<style>
+
+    
+    input{
+        
+        width:220px;
+        height: 40px;
+        background-color: cyan;
+        border-width:  1px;
+        
+    }
+    .back{
+      background-image: url("{{ url_for('static', filename='image/back.jpg') }}");
+    }
+
+    .textbox-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+    .textbox1{
+      width: 48%;
+      height: auto;
+      margin: 10px;
+      padding: 10px;
+    }
+    .textbox2{
+      width: 48%;
+      height: auto;
+      margin: 10px;
+      padding: 10px;      
+    }
+
+    .white{
+      color:white;
+    }
+    
+</style>
+<body class="back"> 
+    <div>
+    <div class="jumbotron">
+        <h1 class="white" style="text-align:center"> HUMAN ACTIVITY </h1>
+      </div>
+      <!-- Main Input For Receiving Query to our ML -->
+      
+<form class="form-group" action="{{ url_for('predict')}}" method="post">
+        <div class="textbox-container">
+
+              <div class="textbox1">
+                <center>
+
+                <pre> </pre><pre> </pre>
+                <label class="white" for=""> tBodyAcc.mean.X </label><br>
+                <input type="number" class="space form-control" step="0.01" name="tBodyAcc.mean.X" placeholder="tBodyAcc.mean.X" required="required" />
+                <pre> </pre><pre> </pre>
+                <label class="white" for=""> tBodyAcc.mean.Y </label><br>
+                <input type="number" class="space form-control" step="0.01" name="tBodyAcc.mean.Y" placeholder="tBodyAcc.mean.Y" required="required" />
+                <pre> </pre><pre> </pre>
+                <label class="white" for=""> tBodyAcc.mean.Z </label><br>
+                <input type="number" class="space form-control" step="0.01" name="tBodyAcc.mean.Z" placeholder="tBodyAcc.mean.Z" required="required" />
+
+                <pre> </pre><pre> </pre>
+                <label class="white"  for=""> tGravityAcc.mean.X </label><br>
+                <input type="number" class="space form-control" step="0.01" name=" tGravityAcc.mean.X " placeholder=" tGravityAcc.mean.X " required="required" />
+                <pre> </pre><pre> </pre>
+                <label class="white"  for=""> tGravityAcc.mean.Y </label><br>
+                <input type="number" class="space form-control" step="0.01" name=" tGravityAcc.mean.Y " placeholder=" tGravityAcc.mean.Y " required="required" />
+                <pre> </pre><pre> </pre>
+                <label class="white"  for=""> tGravityAcc.mean.Z </label><br>
+                <input type="number" class="space form-control" step="0.01" name=" tGravityAcc.mean.Z " placeholder=" tGravityAcc.mean.Z  " required="required" />
+              
+                <pre> </pre><pre> </pre>
+                <label class="white"  for=""> tBodyAccJerk.mean.X </label><br>
+                <input type="number" class="space form-control" step="0.01" name=" tBodyAccJerk.mean.X " placeholder=" tBodyAccJerk.mean.X " required="required" />
+                <pre> </pre><pre> </pre>
+                <label class="white"  for=""> tBodyAccJerk.mean.Y  </label><br>
+                <input type="number" class="space form-control" step="0.01" name=" tBodyAccJerk.mean.Y " placeholder=" tBodyAccJerk.mean.Y " required="required" />
+                <pre> </pre><pre> </pre>
+                <label class="white"  for=""> tBodyAccJerk.mean.Z </label><br>
+                <input type="number" class="space form-control" step="0.01" name=" tBodyAccJerk.mean.Z " placeholder=" tBodyAccJerk.mean.Z " required="required" />
+                
+                </center>
+              </div>
+
+
+              <div class="textbox2">
+                <center>
+
+                  <pre> </pre><pre> </pre>
+                  <label class="white"  for=""> tBodyGyro.mean.X </label><br>
+                  <input type="number" class="space form-control" step="0.01" name=" tBodyGyro.mean.X " placeholder=" tBodyGyro.mean.X " required="required" />
+                  <pre> </pre><pre> </pre>
+                  <label class="white"  for=""> tBodyGyro.mean.Y </label><br>
+                  <input type="number" class="space form-control" step="0.01" name=" tBodyGyro.mean.Y " placeholder=" tBodyGyro.mean.Y " required="required" />
+                  <pre> </pre><pre> </pre>
+                  <label class="white"  for=""> tBodyGyro.mean.Z </label><br>
+                  <input type="number" class="space form-control" step="0.01" name=" tBodyGyro.mean.Z " placeholder=" tBodyGyro.mean.Z " required="required" />
+              
+                  <pre> </pre><pre> </pre>
+                  <label class="white"  for=""> fBodyAcc.mean.X</label><br>
+                  <input type="number" class="space form-control" step="0.01" name=" fBodyAcc.mean.X" placeholder=" fBodyAcc.mean.X" required="required" />
+                  <pre> </pre><pre> </pre>
+                  <label class="white"  for=""> fBodyAcc.mean.Y</label><br>
+                  <input type="number" class="space form-control" step="0.01" name=" fBodyAcc.mean.Y" placeholder=" fBodyAcc.mean.Y" required="required" />
+                  <pre> </pre><pre> </pre>
+                  <label class="white"  for=""> fBodyAcc.mean.Z</label><br>
+                  <input type="number" class="space form-control" step="0.01" name=" fBodyAcc.mean.Z" placeholder=" fBodyAcc.mean.Z" required="required" />
+              
+                  <pre> </pre><pre> </pre>
+                  <label class="white"  for=""> fBodyGyro.mean.X </label><br>
+                  <input type="number" class="space form-control" step="0.01" name=" fBodyGyro.mean.X " placeholder=" fBodyGyro.mean.X " required="required" />
+                  <pre> </pre><pre> </pre>
+                  <label class="white"  for=""> fBodyGyro.mean.Y </label><br>
+                  <input type="number" class="space form-control" step="0.01" name=" fBodyGyro.mean.Y " placeholder=" fBodyGyro.mean.Y " required="required" />
+                  <pre> </pre><pre> </pre>
+                  <label class="white"  for=""> fBodyGyro.mean.Z </label><br>
+                  <input type="number" class="space form-control" step="0.01" name=" fBodyGyro.mean.Z " placeholder=" fBodyGyro.mean.Z " required="required" />
+                </center>
+              </div>
+                             
+        </div>
+        </div>
+       <br>`
+        <div style="padding:2% 38%">
+            <button type="submit" class="btn btn-success btn-block" style="width:350px;padding:20px">Predict</button>		
+          </div>
+
+</form>                                                                                                                                                                                                                                                                                                                                                                                       
+  <br><br>
+
+  <div  style="background:skyblue;padding:2% 45%">
+    {{ prediction_text }}
+  </div>
+
+    <footer class="page-footer font-small blue pt-4" style="background-color: aquamarine">
+        <!-- Footer Links -->
+        <div class="container-fluid text-center text-md-left">
+          <!-- Grid row -->
+          <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-6 mt-md-0 mt-3">
+              <!-- Content -->
+              <h2 class="text-uppercase">Human Activity Recognition</h2>
+              <p><strong>This website is dedicated to providing accurate predictions of human activities using machine learning models.</strong></p>
+            </div>
+            <!-- Grid column -->
+            <hr class="clearfix w-100 d-md-none pb-3">
+            <!-- Grid column -->
+            <div  style="float: left; width:50%">
+              <!-- Links -->
+              <h3 class="text-uppercase">Links</h3>
+              <ul class="list-unstyled">
+                <strong><li>
+                  <a href="#">Home</a>
+                </li>
+                <li>
+                  <a href="#">About</a>
+                </li>
+                <li>
+                  <a href="#">Contact</a>
+                </li></strong>
+              </ul>
+            </div>
+            
+            <div  style="float: left; width:50%">
+              <!-- Links -->
+              <h3 class="text-uppercase">Social Media</h3>
+              <ul><strong>
+                <li>
+                  <a href="#">Facebook</a>
+                </li>
+                <li>
+                  <a href="#">Twitter</a>
+                </li>
+                <li>
+                  <a href="#">Instagram</a>
+                </li></strong>
+              </ul>
+            </div>
+            
+          </div>
+          
+        </div>
+        
+        <center><strong>Copyright © 2023 Human Activity Recognition</strong></center>
+        
+       
+    </footer>
+     <!-- Footer -->
+</body>
+</html>
